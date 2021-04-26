@@ -308,7 +308,8 @@ void Foam::reconstructRegionalMesh::readHeader(Istream& is)
      {
          dictionary headerDict(is);
  
-         is.version(headerDict.lookup("version"));
+         //is.version(headerDict.lookup("version"));
+         is.version(IOstreamOption::versionNumber("version", headerDict));
          #if (OPENFOAM_COM >= 1912)
             is.format(headerDict.get<word>("format"));
          #else
